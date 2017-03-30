@@ -1,0 +1,59 @@
+{
+  "name": "AtomsMirror",
+  "description": "Home Dashboard",
+  "version": "0.0.1",
+  "author": {
+    "name": "Atom Atoms"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.13.1",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.13.0",
+    "express": "^4.14.0",
+    "johnny-five": "^0.10.6",
+    "react-redux": "^4.4.5",
+    "react-rnd": "^4.2.0",
+    "react-router": "^2.6.1",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-promise-middleware": "^3.3.2",
+    "redux-thunk": "^2.1.0",
+    "socket.io-client": "^1.7.1",
+    "underscore": "^1.8.3",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "css-loader": "^0.26.1",
+    "express": "^4.14.0",
+    "file-loader": "^0.9.0",
+    "img-loader": "^1.3.1",
+    "jquery": "^3.1.0",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.15.0",
+    "moment": "^2.15.1",
+    "node-sass": "^4.0.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-document-title": "^2.0.2",
+    "react-fontawesome": "^1.2.0",
+    "react-spinjs": "^3.0.0",
+    "react-toastr": "^2.8.2",
+    "react-youtube": "^7.2.0",
+    "sass-loader": "^4.0.2",
+    "selectn": "^1.1.1",
+    "socket.io": "^1.5.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack-visualizer-plugin": "^0.1.5",
+    "youtube-iframe": "^1.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
