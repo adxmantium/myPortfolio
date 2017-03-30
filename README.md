@@ -1,2 +1,2 @@
 # Me
-All about me - personal resume
+My online resume - highlighting my dev work thus far.
