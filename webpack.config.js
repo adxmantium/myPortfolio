@@ -1,60 +1,75 @@
 var path = require('path');
+var webpack = require('webpack');
 var visualizer = require('webpack-visualizer-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.js",
+
     output: {
-        filename: "./public/Me_bundle.js",
-        sourceMapFilename: "./public/Me_bundle.map"
+        path: path.resolve(__dirname, 'public'),
+        filename: "Me_bundle.js",
+        sourceMapFilename: "Me_bundle.map"
     },
-    devtool: '#source-map',
-    plugins: [
-        new visualizer(),
-    ],
+
+    devtool: '#source-map', 
+
     module: {
-        loaders: [
-            // jsx compiler - jsx to js
+        rules: [
+
+            // resolve .css files using css-loader and style-loader modules
             {
-                loader: 'babel',
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
-                query: {
-                    presets: ['react', 'es2015', 'stage-2']
-                }
+                test: /\.scss$/, 
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
 
-            // sass loader/sourcemapping - sass to css
+            // ExtractTextPlugin will extract css and export it into it's own file
+            // {
+            //     test: /\.scss$/, 
+            //     use: ExtractTextPlugin.extract({
+            //         ['style-loader', 'css-loader', 'sass-loader']
+            //         fallbackLoader: 'style-loader',
+            //         loader: ['css-loader', 'sass-loader'],
+            //         publicPath: './src' //output directory
+            //     })
+            // },
+
+            // use babel-loader to resolve any js files
             {
-                test: /\.scss$/,
-                loaders: [ 
-                    'style', 
-                    'css', 
-                    'autoprefixer?browsers=last 3 versions',
-                    'sass?outputStyle=expanded' 
-                ] //adding sourcemapping to css/sass loaders
+                test: /\.js?$/,
+                exclude: /(node_modules)/,
+                use: 'babel-loader',
             },
 
-            // less loader - less to css
             {
-                test: /\.less$/,
-                loader: "css-loader!less-loader"
-            },
-            
-            // img loader/optimization
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'url?limit=8192',
-                    'img'
+                test: /\.(png|svg|jpeg|jpg|gif)/,
+                use: [
+                    // 'file-loader?name=[name].[ext]&outputPath=images/&publicPath=images/',
+                    'file-loader?name=images/[name].[ext]', // does the same as above line, if ouputPath and publicPath are same
+                    'image-webpack-loader' // optimizes images before being saved to to images folder
                 ]
             },
         ]
     },
-    sassLoader: {
-        includePaths: ['client/style'], //makes calling styles not relative
+
+    devServer: {
+        contentBase: path.resolve(__dirname), // tells server where to serve content from
+        compress: true, // enables gzip compression
+        port: 8080, // customize port number
+        stats: 'errors-only', // only shows error to console
+        open: true, // opens app in new window on server start
+        hot: true, // enables hot module replacement
     },
-    resolve: {
-        root: path.resolve('.'),
-        extenstions: ['', '.js']
-    }
+
+    plugins: [
+        new visualizer(),
+        new webpack.HotModuleReplacementPlugin(), // enable HMR globally
+        new webpack.NamedModulesPlugin(), // prints more readable module names in the browser console on HMR updates
+        
+        // new ExtractTextPlugin({
+        //     filename: './src/styles.css',
+        //     disabled: false,
+        //     allChunks: true,
+        // })
+    ],
 }
