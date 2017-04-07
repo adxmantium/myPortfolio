@@ -1,0 +1,9 @@
+@import '_global.scss';
+
+body{
+	background-color: $lightgray;
+	border: thin solid blue;
+	font-family: $fontfam;
+	padding: 0;
+	margin: 0;
+}

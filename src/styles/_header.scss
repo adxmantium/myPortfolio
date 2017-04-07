@@ -1,0 +1,36 @@
+@import '_global.scss';
+
+$pad: 100px;
+
+#_Header{
+	border: thin solid blue;
+	padding: 100px 50px;
+
+	.half{
+		display: inline-block;
+		width: 50%;
+		vertical-align: top;
+		position: relative;
+
+		&.me{
+			padding: 0 0 0 $pad+10;
+		}
+	}
+
+	.pic{
+		width: $pad;
+		height: 100px;
+		@include b_rad(100%);
+		border: 2px solid #aaa;
+		background: #ddd;
+		position: absolute;
+		top: 0; left: 0; bottom: 0;
+		margin: auto;
+	}
+
+	.name{
+		font-size: 75px;
+		color: $blue;
+	}
+
+}

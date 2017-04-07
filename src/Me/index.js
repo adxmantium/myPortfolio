@@ -4,13 +4,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import DocumentTitle from 'react-document-title'
 
-import './styles.scss'
+import Header from './../Header'
+
+import './../styles/_me.scss'
 
 const Me = React.createClass({
 	render(){
 		return (
 			<DocumentTitle title="Me | Adam Adams">
-				<div>It's me! Changing</div>
+				<Header />
 			</DocumentTitle>
 		);
 	}
